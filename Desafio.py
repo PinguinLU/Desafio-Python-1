@@ -22,10 +22,6 @@ def ver_contatos(contatos):
 def editar_contato():
   pass
 
-def remover_contato():
-    pass
-
-
 contatos = []
   
 while True:
