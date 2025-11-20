@@ -21,6 +21,19 @@ def ver_contatos(contatos):
     for indice, contato in enumerate(contatos, start=1):
          print(f"{indice}. {contato['nome']} - {contato['email']} - {contato['telefone']}")
 
+def remover_contato(contatos):
+    if not contatos:
+        print("Nenhum contato salvo para remover.")
+        return
+  
+    ver_contatos(contatos)
+    indice = int(input("Digite o número do contato que deseja remover: ")) - 1
+  
+    if 0 <= indice < len(contatos):
+        contato_removido = contatos.pop(indice)
+        print(f"\nContato removido com sucesso: {contato_removido['nome']}\n")
+    else:
+        print("Índice inválido. Tente novamente.")
 contatos = []
   
 while True:
@@ -41,6 +54,8 @@ while True:
     adicionar_contato(contatos)
   elif opcao =="2":
     ver_contatos(contatos)
+  elif opcao =="4":
+    remover_contato(contatos)
   elif opcao == "6":
     print("\nPrograma Finalizado")
     break
