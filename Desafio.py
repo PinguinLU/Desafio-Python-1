@@ -19,9 +19,6 @@ def ver_contatos(contatos):
     for indice, contato in enumerate(contatos, start=1):
         print(f"{indice}. {contato['nome']}")
 
-def editar_contato():
-  pass
-
 contatos = []
   
 while True:
