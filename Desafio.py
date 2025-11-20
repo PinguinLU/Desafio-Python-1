@@ -59,6 +59,18 @@ def remover_contato(contatos):
     else:
         print("Índice inválido. Tente novamente.")
 contatos = []
+
+def favoritar_contato(contatos):
+  if not contatos:
+    print("Nenhum contato salvo para favoritar.")
+    return
+  ver_contatos(contatos)
+  indice = int(input("Digite o número do contato que deseja favoritar: ")) - 1
+  if 0 <= indice < len(contatos):
+    contatos[indice]['favorito'] = True
+    print(f"\nContato favoritado com sucesso: {contatos[indice]['nome']}\n")
+  else:
+    print("Índice inválido. Tente novamente.")
   
 while True:
   print("-------------------------------------")
@@ -82,6 +94,8 @@ while True:
     editar_contato(contatos)  
   elif opcao =="4":
     remover_contato(contatos)
+  elif opcao =="5":
+    favoritar_contato(contatos)
   elif opcao == "6":
     print("\nPrograma Finalizado")
     break
