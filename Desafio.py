@@ -21,6 +21,30 @@ def ver_contatos(contatos):
     for indice, contato in enumerate(contatos, start=1):
          print(f"{indice}. {contato['nome']} - {contato['email']} - {contato['telefone']}")
 
+def editar_contato(contatos):
+    if not contatos:
+        print("Nenhum contato salvo para editar.")
+        return
+  
+    ver_contatos(contatos)
+    indice = int(input("Digite o número do contato que deseja editar: ")) - 1
+  
+    if 0 <= indice < len(contatos):
+        nome = input("Digite o novo nome (deixe em branco para manter o atual): ")
+        email = input("Digite o novo email (deixe em branco para manter o atual): ")
+        telefone = input("Digite o novo telefone (deixe em branco para manter o atual): ")
+  
+        if nome:
+            contatos[indice]['nome'] = nome
+        if email:
+            contatos[indice]['email'] = email
+        if telefone:
+            contatos[indice]['telefone'] = telefone
+  
+        print("\nContato editado com sucesso.\n")
+    else:
+        print("Índice inválido. Tente novamente.")
+
 def remover_contato(contatos):
     if not contatos:
         print("Nenhum contato salvo para remover.")
@@ -54,6 +78,8 @@ while True:
     adicionar_contato(contatos)
   elif opcao =="2":
     ver_contatos(contatos)
+  elif opcao =="3":
+    editar_contato(contatos)  
   elif opcao =="4":
     remover_contato(contatos)
   elif opcao == "6":
