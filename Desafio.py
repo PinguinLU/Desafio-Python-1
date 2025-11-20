@@ -20,7 +20,11 @@ def ver_contatos(contatos):
     print("\nLista de Contatos:")
     for indice, contato in enumerate(contatos, start=1):
          print(f"{indice}. {contato['nome']} - {contato['email']} - {contato['telefone']}")
-
+    print("\nLista de Contatos favoritados:")
+    for indice, contato in enumerate(contatos, start=1):
+        if contato.get('favorito'):
+            print(f"{indice}. {contato['nome']} - {contato['email']} - {contato['telefone']}")
+            
 def editar_contato(contatos):
     if not contatos:
         print("Nenhum contato salvo para editar.")
@@ -71,6 +75,18 @@ def favoritar_contato(contatos):
     print(f"\nContato favoritado com sucesso: {contatos[indice]['nome']}\n")
   else:
     print("Índice inválido. Tente novamente.")
+    
+def desfavoritar_contato(contatos):
+  if not contatos:
+    print("Nenhum contato salvo para desfavoritar.")
+    return
+  ver_contatos(contatos)
+  indice = int(input("Digite o número do contato que deseja desfavoritar: ")) - 1
+  if 0 <= indice < len(contatos):
+    contatos[indice]['favorito'] = False
+    print(f"\nContato desfavoritado com sucesso: {contatos[indice]['nome']}\n")
+  else:
+    print("Índice inválido. Tente novamente.")
   
 while True:
   print("-------------------------------------")
@@ -81,7 +97,8 @@ while True:
   print("3.Editar Contato")
   print("4.Remover Contatos")
   print("5.Favoritar Contatos")
-  print("6.Encerrar programa")
+  print("6.Desfavoritar Contatos")
+  print("7.Encerrar programa")
   print("-------------------------------------")
   
   opcao = str(input("\nDigite uma opção: "))
@@ -97,5 +114,7 @@ while True:
   elif opcao =="5":
     favoritar_contato(contatos)
   elif opcao == "6":
+    desfavoritar_contato(contatos)
+  elif opcao == "7":
     print("\nPrograma Finalizado")
     break
