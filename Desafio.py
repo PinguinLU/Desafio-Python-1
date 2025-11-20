@@ -1,4 +1,4 @@
-def adicionar_contato():
+def adicionar_contato(contatos):
     nome = input("Digite o nome do contato que deseja adicionar: ")
     email = input("Digite o email: ")
     telefone = input("Digite o telefone: ")
@@ -13,11 +13,13 @@ def adicionar_contato():
     print(f"\nContato adicionado com sucesso:\n \n{nome} \n{email} \n{telefone}\n")
 
 def ver_contatos(contatos):
-  if not contatos:
-    print("Nenhum contato salvo.")
-    return
+    if not contatos:
+        print("Nenhum contato salvo.")
+        return
+  
+    print("\nLista de Contatos:")
     for indice, contato in enumerate(contatos, start=1):
-        print(f"{indice}. {contato['nome']}")
+         print(f"{indice}. {contato['nome']} - {contato['email']} - {contato['telefone']}")
 
 contatos = []
   
@@ -36,12 +38,9 @@ while True:
   opcao = str(input("\nDigite uma opção: "))
   
   if opcao =="1":
-    adicionar_contato()
+    adicionar_contato(contatos)
   elif opcao =="2":
-    print("-------------------------------------")
-    print("\nEsses são os seus contatos salvos:\n")
-    print(ver_contatos)
-    print("-------------------------------------")
+    ver_contatos(contatos)
   elif opcao == "6":
     print("\nPrograma Finalizado")
     break
